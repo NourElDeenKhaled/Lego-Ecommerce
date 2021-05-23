@@ -1,0 +1,146 @@
+<div class="container" dir="auto">
+  <div class="row">
+    <div class="col"></div>
+
+    <div class="col-lg-5 col-sm-12 text-center" id="main">
+
+      <nav style="display: flex; justify-content: space-evenly; align-items: center;">
+        <div>
+          <a role="button"
+              ><i
+                class="fas fa-chevron-left"
+                id="backBtn"
+                (click)="goBackBtn()"
+              ></i
+            ></a>
+        </div>
+
+        <div>
+          <img src="assets/images/Register-Login-Images/lego.png" alt="logo" style="width:40px;">
+        </div>
+
+        <div>
+          <span
+            class="h1 text-dark font-weight-bold " id="navTxt"
+            ><strong>{{'User.Account'|translate}}</strong>
+          </span>
+        </div>
+
+        <div>
+          <button
+            type="button"
+            class="close font-weight-bold text-right"
+            id="navBtn"
+            (click)="closeBtn()"
+          >
+            ×
+          </button>
+        </div>
+
+      </nav>
+
+      <br />
+      <img
+        src="assets/images/Register-Login-Images/avatar.png"
+        id="avatarr"
+        class="text-center"
+      />
+      <br />
+      <br />
+      <div class="container-fluid">
+        <div>
+          <form id="loginForm" (ngSubmit)="loginCustomer()">
+            <div class="mb-3">
+              <label
+                id="signinEmailLabel"
+                for="usernameSigninTxt"
+                class="form-label text-justify justify-content-left d-flex" dir="auto"
+                >{{'login.Username' |translate}}</label
+              >
+              <input
+                #loginemail = "ngModel"
+                [(ngModel)]="loginEmail"
+                name="email"
+                type="email"
+                class="form-control"
+                id="usernameSigninTxt"
+                placeholder="Username"
+                required
+              />
+              <div class="text-danger text-justify emailWarn"  dir="auto" *ngIf="(!loginemail.valid && loginemail.touched)">
+                {{'login.FRequired' |translate}}
+              </div>
+            </div>
+
+            <div class="mb-3" id="trial">
+              <label
+                id="signinPasswordLabel"
+                for="passwordSigninTxt"
+                class="form-label text-justify justify-content-left d-flex" dir="auto"
+                >{{'User.Password' | translate}}</label
+              >
+              <input
+                #loginpass = "ngModel"
+                [(ngModel)]="loginPassword"
+                name="password"
+                type="password"
+                class="form-control"
+                id="passwordSigninTxt"
+                placeholder="* * * * * * * *"
+                required
+              />
+              <div class="text-danger text-justify passWarn" *ngIf="(!loginpass.valid && loginpass.touched)" dir="auto">
+                {{'login.FRequired' |translate}}
+              </div>
+            </div>
+
+            <div class="mb-3 form-check">
+              <div class="d-flex">
+                <input
+                  
+                  [(ngModel)]="rememberMe"
+                  name="rememberme"
+                  type="checkbox"
+                  class="form-check-input justify-content-left d-flex"
+                  id="rememberMeCheck"
+                />
+                <a
+                  href="javascript:void(0)"
+                  id="signinCheckLabel"
+                  class="form-check-label d-flex text-justify justify-content-left" dir="auto"
+                  for="rememberMeCheck">{{'login.Remember' |translate}}</a>
+              </div>
+              <p
+                id="logoutTxt"
+                class="text-justify" >
+                {{'login.R' |translate}}<br />{{'login.R1' |translate}}
+              </p>
+            </div>
+
+            <button type="submit" id="signInLogInBtn" class="btn">
+              {{'User.Log' |translate}}
+            </button>
+          </form>
+
+          <div class="d-flex" dir="auto">
+            <a id="forgotPassword" [routerLink]="['/ForgotPassword']" dir="auto"
+              ><strong>{{'login.ForgotPass' |translate}}</strong></a>
+          </div>
+          
+          <div class="d-flex">
+            <hr class="Line" />
+            <p id="ORtxt">{{'login.or' |translate}}</p>
+            <hr class="Line" />
+          </div>
+          <br />
+          <p style="margin-bottom: 3px">{{'login.Dont' |translate }}</p>
+          <a style="font-size: 14px" class="nav-link" [routerLink]="['/Register']">{{'login.CrAccount' | translate}}</a>
+        </div>
+      </div>
+      <br />
+      <br />
+    </div>
+
+    <div class="col"></div>
+  </div>
+</div>

@@ -1,0 +1,249 @@
+<!-- <ul class="nav d-flex justify-content-between bg-warning text-justify" dir="auto">
+  <li class="nav-item ">
+    <a class="nav-link active" aria-current="page" href="Mybag2.html" style="padding-top: 30px">{{'Checkout.MyBag' |
+      translate}}</a>
+  </li>
+  <li class="nav-item ">
+    <a class="nav-link" href="#"><img src="lego.png"
+        style="width: 75px; height: auto;margin-left: auto;margin-right: auto"></a>
+  </li>
+  <li class="nav-item">
+    <p class="nav-link" style="padding-top: 30px"><i class="fas fa-lock"></i> {{'Checkout.SecureCheckout' | translate}}
+    </p>
+    
+
+  </li>
+
+</ul> -->
+<!-- -------------------header------------------------- -->
+<div class="container-fluid text-justify" dir="auto">
+  <div class="row">
+    <div class="col-lg-9"><br>
+      <form #orderForm="ngForm">
+        <div class="col-sm-15">
+          <input [(ngModel)]="Username" title="Three letter country code" type="text" name="xyz" class="form-control"
+            placeholder="Name" aria-label="Name" #name="ngModel" minlength="4" required>
+          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+
+            <div *ngIf="name.errors.required">
+              Name is required.
+            </div>
+            <div *ngIf="name.errors.minlength">
+              Name must be at least 3 characters long.
+            </div>
+
+          </div>
+
+        </div><br>
+        <p class="fs-6"><i class="fas fa-check-circle"></i>{{'Checkout.ShippingAddress' | translate}}</p>
+        <div class="row g-3">
+          <div class="col-sm-7">
+            <input [(ngModel)]="City" title="City must Contain Letters Only" type="text" class="form-control"
+              placeholder="City" name="city" aria-label="City" #city1="ngModel" required>
+            <div *ngIf="city1.invalid && (city1.dirty || city1.touched)" class="alert alert-danger">
+              <div *ngIf="city1.errors.required">
+                city is required.
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="col-sm">
+            <input name="street" [(ngModel)]="Street" type="text" class="form-control" placeholder="Street Address"
+              aria-label="Street Address" required #street1="ngModel">
+            <div *ngIf="street1.invalid && (street1.dirty || street1.touched)" class="alert alert-danger">
+              <div *ngIf="street1.errors.required">
+                street is required.
+              </div>
+            </div>
+          </div>
+          <div class="col-sm">
+            <input name="zip" [(ngModel)]="Zip" type="number" class="form-control" placeholder="Zip" aria-label="Zip"
+              #Z="ngModel" required  min="0" oninput="validity.valid||(value='');">
+            <div *ngIf="Z.invalid && (Z.dirty || Z.touched)" class="alert alert-danger">
+              <div *ngIf="Z.errors.required">
+                ZIP is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+
+        <p class="fs-4"><i class="fas fa-check-circle"></i>{{'Checkout.ContactInfo' | translate}} </p>
+
+        <div class="row g-3">
+          <div class="col-sm-7">
+            <input name="email" type="email" [(ngModel)]="email" class="form-control" placeholder="Email"
+              aria-label="Email" #u="ngModel" email="true" required>
+            <div *ngIf="u.invalid && (u.dirty || u.touched)" class="alert alert-danger">
+              <div *ngIf="u.invalid ">
+                please enter a valid email
+              </div>
+              <div *ngIf="u.errors.required">
+                email is required.
+              </div>
+
+
+            </div>
+
+
+          </div>
+          <div class="col-sm">
+            <input name="mobilephone" [(ngModel)]="mobilePhone" type="text" class="form-control"
+              placeholder="Mobile Phone" aria-label="Mobile Phone" required pattern="[0-9]{11}" #phone="ngModel">
+            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger">
+
+              <div *ngIf="phone.errors.required">
+                phone is required.
+              </div>
+              <div *ngIf="phone.invalid">
+                phone numer must containes 11 numbers
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+        <br>
+        <!--     //////////Accordion start//////////-->
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <!-- <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <p class="fs-5">{{'Checkout.VIPCode' | translate}}</p>
+              </button>
+            </h2> -->
+            <!-- <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+
+                <b>{{'Checkout.Got' | translate}} </b> <br><br>
+                {{'Checkout.Discount' | translate}} <br><br>
+                <div class="row g-3">
+                  <div class="col-sm-7">
+                    <input type="email" class="form-control" placeholder="Email" aria-label="Email">
+                  </div>
+                  <div class="col-sm">
+                    <input type="number" class="form-control" placeholder="Mobile Phone" aria-label="Mobile Phone">
+                  </div>
+                </div>
+                <br>
+
+              </div>
+            </div> -->
+          </div>
+        </div>
+        <!--/////////////////////////Accord end/////////////////-->
+        <br>
+        <p class="fs-4"><i class="fas fa-check-circle"></i>{{'Checkout.Payment' | translate}} </p>
+        <div class="col-sm-15">
+          <input type="number" class="form-control" 
+            
+            placeholder="Card Number" aria-label="Card Number"
+            [(ngModel)]="card"  min="0" oninput="validity.valid||(value='');"
+            required name="cardnum" #cardn="ngModel">
+          <div *ngIf="cardn.invalid && (cardn.dirty || cardn.touched)" class="alert alert-danger">
+            
+            <div *ngIf="cardn.errors.required">
+              Card Number is required.
+            </div>
+
+            <div *ngIf="cardn.invalid">
+              Must contain numbers Only
+            </div>
+           
+
+          </div>
+
+        </div><br>
+
+        <div class="row g-3">
+          <!-- <div class="col-sm-3">
+            <input type="text" class="form-control" placeholder="Expiry Date" aria-label="Expiry Date">
+          </div>
+          <div class="col-sm-2">
+            <input type="text" class="form-control" placeholder="CVV" aria-label="CVV">
+          </div> -->
+        </div><br>
+        <button type="submit" class="btn btn-primary"
+        [disabled]="orderForm.invalid"
+        (click)="addOrder()">{{'Checkout.Place' | translate}}</button>
+
+      </form>
+    </div>
+    <!-- -------------------Right Left ------------------ -->
+    <div class="col-lg-3" style="padding: 15px;">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{'Checkout.Order'|translate}}</h5>
+
+          <hr>
+          <div class="d-flex justify-content-between">
+            <p>{{'Checkout.subtotal'|translate}}</p>
+            <p>{{getTotal() | currency}}</p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p>{{'Checkout.StandardShipping'|translate}}</p>
+            <p>{{'Checkout.Free'|translate}}</p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p>{{'TAX'|translate}}</p>
+            <p>14%</p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p>{{'Checkout.OrderTotal'|translate}}</p>
+            <p>{{ (getTotal()+getTotal()*14/100) | currency }}</p>
+          </div>
+          <img src='assets/images/freeholiday.png' style="width: 150px; height: auto;">
+
+        </div>
+      </div>
+      <!--/////////////////////////////////////////////////////-->
+      <div class="card text-center" style="width: 18rem;" dir="auto">
+        <div class="card-body text-justify" dir="auto">
+          <h5 class="card-title card text-center">{{'Checkout.Wedding' | translate}} 2018</h5>
+          <!-- <p class="card-text"><p style="color: darkseagreen">Available now</p> <br> QTY : 3 <br>  <b>$9.99</b></p> -->
+          <!-- <p style="color: darkseagreen">Available now</p> <br> QTY : 3 <br><b>$9.99</b> -->
+          <!-- <p style="color: darkseagreen">{{'Checkout.Available' | translate}}</p> <br>$9.99<br> -->
+
+          <img src="assets/images/weddingfavour.png" style="width: 150px; height: auto;">
+
+          <!-- <p style="color: darkseagreen">{{'Checkout.Available' | translate}}</p> <br> {{'Checkout.QTY' | translate}} : -->
+          <br> <b class="card text-center"  >$9.99</b>
+          <!-- <img src="weddingfavour.png" style="width: 150px; height: auto;"> -->
+
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- -------------------Right Left end------------------ -->
+
+
+  </div>
+</div>
+
+
+<!-- -------------------Footer------------------------- -->
+
+<footer>
+  <div class="container-fluid text-justify" dir="auto">
+    <div class="row">
+      <div class="col-lg-7">
+        <p>{{'Checkout.prag' | translate}} </p>
+
+      </div>
+      <br><br><br><br><br><br>
+      <div class="col-lg-5">
+        <i class="fab fa-cc-mastercard" style="font-size: 50px"></i>
+        <i class="fab fa-cc-visa" style="font-size: 50px"></i>
+        <i class="fab fa-cc-discover" style="font-size: 50px"></i>
+        <i class="fab fa-cc-amex" style="font-size: 50px"></i>
+        <i class="fab fa-cc-paypal" style="font-size: 50px"></i>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,191 @@
+<h1 class="ml-3 mb-3 text-justify" dir="auto">{{'RecommendedForYou.Recommended'|translate}}</h1>
+
+<!--Carousel Wrapper-->
+<div id="multi-item-example" class="carousel slide carousel-multi-item text-justify" dir="auto" data-interval="false">
+    <div class="container-fluid">
+        <!--Slides-->
+        <div class="carousel-inner text-justify" dir="auto" role="listbox">
+
+            <!--First slide-->
+            <div class="carousel-item active">
+
+                <div class="row">
+
+                    <div *ngFor="let product of ProductList1" class="col-lg-3 col-md-6">
+                        <div class="card mb-2">
+                            <div class="d-flex p-2 justify-content-between ">
+                                <div class="bg-light rounded-circle">
+                                    <svg (click)="addToWishlist(product?.id)" id="heart" width="100%" height="100%" viewBox="0 0 40 40" alt=""
+                                        class="WishlistButtonstyles__StyledWishlistIcon-d720r1-1 eDfAts">
+                                        <rect fill="#F8F8F8" width="40" height="40" rx="20"></rect>
+                                        <path class="d-none"
+                                            d="M19.986 30l.014-.014.014.014 8.223-8.116-.018-.019a5.678 5.678 0 0 0 1.78-4.126C30 14.569 27.398 12 24.187 12A5.829 5.829 0 0 0 20 13.762 5.827 5.827 0 0 0 15.815 12C12.604 12 10 14.569 10 17.739a5.68 5.68 0 0 0 1.782 4.126"
+                                            fill="#006DB7"></path>
+                                        <path
+                                            d="M26.84 20.417L20 27.204l-6.84-6.787A3.67 3.67 0 0 1 12 17.739C12 15.677 13.71 14 15.815 14a3.82 3.82 0 0 1 2.754 1.159l1.43 1.467 1.433-1.467A3.818 3.818 0 0 1 24.186 14C26.289 14 28 15.677 28 17.739a3.673 3.673 0 0 1-1.16 2.678M19.986 30l.014-.014.014.014 8.223-8.116-.018-.019a5.678 5.678 0 0 0 1.78-4.126C30 14.569 27.398 12 24.187 12A5.829 5.829 0 0 0 20 13.762 5.827 5.827 0 0 0 15.815 12C12.604 12 10 14.569 10 17.739a5.68 5.68 0 0 0 1.782 4.126"
+                                            fill="#006DB7">
+                                        </path>
+                                    </svg>
+
+                                </div>
+                                <div class="badge badge-warning p-2">{{'RecommendedForYou.Exclusives'|translate}}</div>
+                            </div>
+                            <img  class="card-img-top mx-auto" (click)="ShowProduct(product?.id)"  src={{product?.image}} alt="Card image cap">
+                            <div class="card-body">
+                                <h6 *ngIf="translate.currentLang=='en'" id="pr_name" class="card-title" style="height: 30px;">{{product?.name}}</h6>
+                                <h6 *ngIf="translate.currentLang=='ar'" id="pr_name" class="card-title" style="height: 30px;">{{product?.arabicName}}</h6>
+                                <p class="card-text">
+                            
+                                    <i *ngFor="let i of [].constructor(product?.rating)" class="fa fa-star text-warning" aria-hidden="true"></i>
+                                    
+                                    <br>{{product?.price | currency}}
+                                </p>
+                                <button (click)="addToBag(product?.id)" *ngIf="product?.stock<=0" disabled class="btn text-justify" dir="auto">{{'RecommendedForYou.BagOut'|translate}}</button>
+                                <button (click)="addToBag(product?.id)" *ngIf="product?.stock>0" class="btn text-justify" dir="auto">{{'RecommendedForYou.Bag'|translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!--/.First slide-->
+
+            <!--Second slide-->
+            <div class="carousel-item">
+
+                <div class="row">
+                    <div *ngFor="let product of ProductList2" class="col-lg-3 col-md-6">
+                        <div class="card mb-2">
+                            <div class="d-flex p-2 justify-content-between ">
+                                <div class="bg-light rounded-circle">
+                                    <svg (click)="addToWishlist(product?.id)" id="heart" width="100%" height="100%" viewBox="0 0 40 40" alt=""
+                                        class="WishlistButtonstyles__StyledWishlistIcon-d720r1-1 eDfAts">
+                                        <rect fill="#F8F8F8" width="40" height="40" rx="20"></rect>
+                                        <path class="d-none"
+                                            d="M19.986 30l.014-.014.014.014 8.223-8.116-.018-.019a5.678 5.678 0 0 0 1.78-4.126C30 14.569 27.398 12 24.187 12A5.829 5.829 0 0 0 20 13.762 5.827 5.827 0 0 0 15.815 12C12.604 12 10 14.569 10 17.739a5.68 5.68 0 0 0 1.782 4.126"
+                                            fill="#006DB7"></path>
+                                        <path
+                                            d="M26.84 20.417L20 27.204l-6.84-6.787A3.67 3.67 0 0 1 12 17.739C12 15.677 13.71 14 15.815 14a3.82 3.82 0 0 1 2.754 1.159l1.43 1.467 1.433-1.467A3.818 3.818 0 0 1 24.186 14C26.289 14 28 15.677 28 17.739a3.673 3.673 0 0 1-1.16 2.678M19.986 30l.014-.014.014.014 8.223-8.116-.018-.019a5.678 5.678 0 0 0 1.78-4.126C30 14.569 27.398 12 24.187 12A5.829 5.829 0 0 0 20 13.762 5.827 5.827 0 0 0 15.815 12C12.604 12 10 14.569 10 17.739a5.68 5.68 0 0 0 1.782 4.126"
+                                            fill="#006DB7">
+                                        </path>
+                                    </svg>
+
+                                </div>
+                                <div class="badge badge-danger p-2">20%OFF</div>
+                            </div>
+                            <img class="card-img-top mx-auto" (click)="ShowProduct(product?.id)" src={{product?.image}} alt="Card image cap">
+                            <div class="card-body">
+                                <h6 *ngIf="translate.currentLang=='en'" id="pr_name" class="card-title" style="height: 30px;">{{product?.name}}</h6>
+                                <h6 *ngIf="translate.currentLang=='ar'" id="pr_name" class="card-title" style="height: 30px;">{{product?.arabicName}}</h6>
+                                <p class="card-text">
+                                    
+                                    <i *ngFor="let i of [].constructor(product?.rating)" class="fa fa-star text-warning" aria-hidden="true"></i>
+                                    
+                                    <br>{{product?.price | currency}}
+                                </p>
+                                <button (click)="addToBag(product?.id)" *ngIf="product?.stock<=0" disabled class="btn text-justify" dir="auto">{{'RecommendedForYou.BagOut'|translate}}</button>
+                                <button (click)="addToBag(product?.id)" *ngIf="product?.stock>0" class="btn text-justify" dir="auto">{{'RecommendedForYou.Bag'|translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+            <!--/.Second slide-->
+
+            <!--Third slide
+            <div class="carousel-item">
+
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <div class="card mb-2">
+                            <img class="card-img-top"
+                                src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">Card title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the
+                                    card's content.</p>
+                                <button class="btn">Button</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 d-none d-md-block">
+                        <div class="card mb-2">
+                            <img class="card-img-top"
+                                src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">Card title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the
+                                    card's content.</p>
+                                <button class="btn">Button</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 d-none d-md-block">
+                        <div class="card mb-2">
+                            <img class="card-img-top"
+                                src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">Card title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the
+                                    card's content.</p>
+                                <button class="btn">Button</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 d-none d-md-block">
+                        <div class="card mb-2">
+                            <img class="card-img-top"
+                                src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">Card title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the
+                                    card's content.</p>
+                                <button class="btn">Button</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            /.Third slide-->
+
+        </div>
+        <!--/.Slides-->
+    </div>
+
+    <!--Controls
+    <div class="controls-top">
+        <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+        <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>
+    </div>
+    Controls-->
+    <a class="carousel-control-prev w-auto text-justify" dir="auto" href="#multi-item-example" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
+        <span class="sr-only">{{'RecommendedForYou.Previous'|translate}}</span>
+    </a>
+    <a class="carousel-control-next w-auto text-justify" dir="auto" href="#multi-item-example" role="button" data-slide="next">
+        <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
+        <span class="sr-only">{{'RecommendedForYou.Next'|translate}}</span>
+    </a>
+
+
+
+</div>
+<!--/.Carousel Wrapper-->
